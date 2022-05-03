@@ -1,13 +1,28 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.socketes2;
 
-/**
- *
- * @author Admin
- */
+import java.io.IOException;
+import java.net.ServerSocket;
+import java.net.Socket;
+
 public class Server {
     
+    private int PORT = 2000;
+    ServerSocket serverSocket;
+    
+    public Server() throws IOException{
+        this.serverSocket = new ServerSocket(this.PORT);
+        this.serverSocket.setReuseAddress(true);
+    }
+    
+    public void start() throws IOException{
+        while(true){
+            Socket client = this.serverSocket.accept();
+            System.out.printf("Client connected \n");
+            
+            ClientHandler ch = new ClientHandler(client);
+            
+            Thread t = new Thread(ch);
+            t.start();
+        }
+    }
 }

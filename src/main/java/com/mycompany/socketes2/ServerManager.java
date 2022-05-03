@@ -1,13 +1,17 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package com.mycompany.socketes2;
 
-/**
- *
- * @author Admin
- */
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class ServerManager {
-    
+    public static void main(String[] args){
+        try {
+            Server s = new Server();
+            s.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+    }
 }
