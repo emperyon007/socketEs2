@@ -8,6 +8,7 @@ public class Server {
     
     private int PORT = 2000;
     ServerSocket serverSocket;
+    private int counter = 0;
     
     public Server() throws IOException{
         this.serverSocket = new ServerSocket(this.PORT);
@@ -19,7 +20,7 @@ public class Server {
             Socket client = this.serverSocket.accept();
             System.out.printf("Client connected \n");
             
-            ClientHandler ch = new ClientHandler(client);
+            ClientHandler ch = new ClientHandler(client, this.counter++);
             
             Thread t = new Thread(ch);
             t.start();

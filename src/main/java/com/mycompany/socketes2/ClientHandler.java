@@ -10,9 +10,11 @@ import java.util.Scanner;
 public class ClientHandler implements Runnable{
     
     private Socket client;
+    private int counter;
     
-    public ClientHandler(Socket client){
+    public ClientHandler(Socket client, int counter){
         this.client = client;
+        this.counter = counter;
     }
     
     @Override
@@ -28,7 +30,7 @@ public class ClientHandler implements Runnable{
             String line;
             while ((line = in.readLine()) != null) {
                 String answer;
-                System.out.printf("Client: %s\n", line);
+                System.out.printf("Client(%d): %s\n", this.counter, line);
                 Scanner sc = new Scanner(System.in);
                 answer = sc.nextLine();
                 out.println(answer);
