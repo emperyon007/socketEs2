@@ -6,12 +6,13 @@ import java.net.Socket;
 
 public class Server {
     
-    private int PORT = 2000;
+    private int port;
     ServerSocket serverSocket;
     private int counter = 0;
     
-    public Server() throws IOException{
-        this.serverSocket = new ServerSocket(this.PORT);
+    public Server(int port) throws IOException{
+        this.port = port;
+        this.serverSocket = new ServerSocket(port);
         this.serverSocket.setReuseAddress(true);
     }
     

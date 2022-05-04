@@ -7,7 +7,7 @@ import java.util.logging.Logger;
 public class ServerManager {
     public static void main(String[] args){
         try {
-            Server s = new Server();
+            Server s = new Server(2000);
             s.start();
         } catch (IOException e) {
             e.printStackTrace();

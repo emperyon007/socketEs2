@@ -9,12 +9,14 @@ import java.util.Scanner;
 
 public class Client {
     
-    private int PORT = 2000;
-    private String IP = "localhost";
+    private int port;
+    private String ip;
     private Socket socket;
     
-    public Client() throws IOException{
-        this.socket = new Socket(this.IP, this.PORT);
+    public Client(String ip, int port) throws IOException{
+        this.ip = ip;
+        this.port = port;
+        this.socket = new Socket(ip, port);
     }
     
     public void start(){
